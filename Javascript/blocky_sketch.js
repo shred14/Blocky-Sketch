@@ -13,26 +13,32 @@ function createSketchPad() {
 
 function constructSketchPad(squares_per_side) {
   var $sketchpad = $('#sketchpad');
-  var height  = ($sketchpad.height() - (2 * squares_per_side) ) / squares_per_side;
-  var width   = ($sketchpad.width() - (2 * squares_per_side) ) / squares_per_side;
+  var height  = ($sketchpad.height()) / squares_per_side;
+  var width   = ($sketchpad.width()) / squares_per_side;
 
   var number_of_blocks = squares_per_side * squares_per_side;
-  for (currentRow = 0; currentRow < number_of_blocks; currentRow++) {
-    createDiv(height, width);
+  var size = width < height ? width : height;
+
+  //to suit the squares
+  $sketchpad.width((size * squares_per_side ));
+  $sketchpad.height((size * squares_per_side));
+
+  for (count = 0; count < number_of_blocks; count++) {
+    createDiv(size);
   }
 }
 
-function createDiv(block_height, block_width) {
+function createDiv(block_size) {
   var $block = $('<div></div>');
   $block.addClass('block');
-  $block.width(block_width);
-  $block.height(block_height);
+  $block.width(block_size);
+  $block.height(block_size);
   
   $block.mouseenter(function() {
       $(this).toggleClass('sketched');
   });
 
-  $block.appendTo($('#sketchpad'))
+  $block.appendTo($('#sketchpad'));
 }
 
 function destroyBlocks() {
