@@ -1,7 +1,10 @@
 .block {
-    margin-bottom: 1px;
-    height: 60px;
-    width:  60px;
-    border-radius: 10px;
+    display: inline-block;
+    border: 1px solid #d4d4d4;
     background-color: #69D2E7;
+}
+
+#sketchpad {
+    width: 80%;
+    height: 95%;
 }
