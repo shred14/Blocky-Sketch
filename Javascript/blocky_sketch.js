@@ -2,6 +2,11 @@ function createSketchPad() {
   destroyBlocks();
   var squares_per_side = prompt("How many squares per side would you like?");
 
+  if(squares_per_side < 2) {
+    alert("Your input was not valid! Using a default of 16 instead");
+    squares_per_side = 16;
+  }
+
   $button = $('button');
   
   if($button.text() === 'Build') {
